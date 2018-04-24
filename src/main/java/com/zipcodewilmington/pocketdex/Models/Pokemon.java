@@ -1,21 +1,24 @@
 package com.zipcodewilmington.pocketdex.Models;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Pokemon {
 
     private Integer id;
     private String name;
     private Integer height;
     private Integer weight;
-    private List abilities;
+    private String[] abilities;
+    private String[] types;
 
-    public Pokemon(Integer id, String name, Integer height, Integer weight, List abilities) {
+    public Pokemon(Integer id, String name, Integer height, Integer weight, String[] abilities, String[] types) {
         this.id = id;
         this.name = name;
         this.height = height;
         this.weight = weight;
         this.abilities = abilities;
+        this.types = types;
     }
 
     public Integer getId() {
@@ -50,11 +53,19 @@ public class Pokemon {
         this.weight = weight;
     }
 
-    public List getAbilities() {
+    public String[] getAbilities() {
         return abilities;
     }
 
-    public void setAbilities(List abilities) {
+    public void setAbilities(String[] abilities) {
         this.abilities = abilities;
+    }
+
+    public String[] getTypes() {
+        return types;
+    }
+
+    public void setTypes(String[] types) {
+        this.types = types;
     }
 }
