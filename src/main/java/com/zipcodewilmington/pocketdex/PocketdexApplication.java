@@ -23,10 +23,10 @@ public class PocketdexApplication {
 	    return builder.build();
     }
 
-    @Bean
+	@Bean
     public CommandLineRunner run(RestTemplate restTemplate){
 	    return args -> {
-	        Pokemon pokemon = restTemplate.getForObject("http://pokeapi.co/api/v2/pokemon/{name}", Pokemon.class);
+	        Pokemon pokemon = restTemplate.getForObject("http://pokeapi.co/api/v2/pokemon/charmander", Pokemon.class);
 	        log.info(pokemon.toString());
         };
     }

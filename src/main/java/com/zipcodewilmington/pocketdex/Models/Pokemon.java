@@ -2,23 +2,23 @@ package com.zipcodewilmington.pocketdex.Models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class Pokemon {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.io.Serializable;
+import java.util.List;
 
+@Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Pokemon implements Serializable{
+    @Id
     private Integer id;
     private String name;
     private Integer height;
     private Integer weight;
-    private String[] abilities;
-    private String[] types;
+    private List<String> abilities;
+    private List<String> types;
 
-    public Pokemon(Integer id, String name, Integer height, Integer weight, String[] abilities, String[] types) {
-        this.id = id;
-        this.name = name;
-        this.height = height;
-        this.weight = weight;
-        this.abilities = abilities;
-        this.types = types;
+    public Pokemon() {
     }
 
     public Integer getId() {
@@ -53,19 +53,31 @@ public class Pokemon {
         this.weight = weight;
     }
 
-    public String[] getAbilities() {
+    public List<String> getAbilities() {
         return abilities;
     }
 
-    public void setAbilities(String[] abilities) {
+    public void setAbilities(List<String> abilities) {
         this.abilities = abilities;
     }
 
-    public String[] getTypes() {
+    public List<String> getTypes() {
         return types;
     }
 
-    public void setTypes(String[] types) {
+    public void setTypes(List<String> types) {
         this.types = types;
+    }
+
+    @Override
+    public String toString() {
+        return "Pokemon{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", height=" + height +
+                ", weight=" + weight +
+                ", abilities=" + abilities +
+                ", types=" + types +
+                '}';
     }
 }
